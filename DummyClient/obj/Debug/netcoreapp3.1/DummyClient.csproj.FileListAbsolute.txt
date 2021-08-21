@@ -1,0 +1,16 @@
+C:\Users\kym07\Downloads\PacketSession\DummyClient\bin\Debug\netcoreapp3.1\DummyClient.exe
+C:\Users\kym07\Downloads\PacketSession\DummyClient\bin\Debug\netcoreapp3.1\DummyClient.deps.json
+C:\Users\kym07\Downloads\PacketSession\DummyClient\bin\Debug\netcoreapp3.1\DummyClient.runtimeconfig.json
+C:\Users\kym07\Downloads\PacketSession\DummyClient\bin\Debug\netcoreapp3.1\DummyClient.runtimeconfig.dev.json
+C:\Users\kym07\Downloads\PacketSession\DummyClient\bin\Debug\netcoreapp3.1\DummyClient.dll
+C:\Users\kym07\Downloads\PacketSession\DummyClient\bin\Debug\netcoreapp3.1\DummyClient.pdb
+C:\Users\kym07\Downloads\PacketSession\DummyClient\bin\Debug\netcoreapp3.1\ServerCore.dll
+C:\Users\kym07\Downloads\PacketSession\DummyClient\bin\Debug\netcoreapp3.1\ServerCore.pdb
+C:\Users\kym07\Downloads\PacketSession\DummyClient\obj\Debug\netcoreapp3.1\DummyClient.AssemblyInfoInputs.cache
+C:\Users\kym07\Downloads\PacketSession\DummyClient\obj\Debug\netcoreapp3.1\DummyClient.AssemblyInfo.cs
+C:\Users\kym07\Downloads\PacketSession\DummyClient\obj\Debug\netcoreapp3.1\DummyClient.csproj.CoreCompileInputs.cache
+C:\Users\kym07\Downloads\PacketSession\DummyClient\obj\Debug\netcoreapp3.1\DummyClient.csproj.CopyComplete
+C:\Users\kym07\Downloads\PacketSession\DummyClient\obj\Debug\netcoreapp3.1\DummyClient.dll
+C:\Users\kym07\Downloads\PacketSession\DummyClient\obj\Debug\netcoreapp3.1\DummyClient.pdb
+C:\Users\kym07\Downloads\PacketSession\DummyClient\obj\Debug\netcoreapp3.1\DummyClient.genruntimeconfig.cache
+C:\Users\kym07\Downloads\PacketSession\DummyClient\obj\Debug\netcoreapp3.1\DummyClient.csproj.AssemblyReference.cache
