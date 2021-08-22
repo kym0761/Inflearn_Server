@@ -172,6 +172,7 @@ namespace ServerCore
 					// Write 커서 이동
 					if (_recvBuffer.OnWrite(args.BytesTransferred) == false)
 					{
+						Console.WriteLine("Write Cursor Failed");
 						Disconnect();
 						return;
 					}
@@ -181,6 +182,7 @@ namespace ServerCore
 
 					if (processLen < 0 || _recvBuffer.DataSize < processLen)
 					{
+						Console.WriteLine("Data Processing Failed");
 						Disconnect();
 						return;
 					}
@@ -188,6 +190,7 @@ namespace ServerCore
 					// Read 커서 이동
 					if (_recvBuffer.OnRead(processLen) == false)
 					{
+						Console.WriteLine("Read Cursor Failed");
 						Disconnect();
 						return;
 					}
@@ -201,6 +204,9 @@ namespace ServerCore
 			}
 			else
 			{
+				Console.WriteLine("OnRecvCompleted Failed");
+				Console.WriteLine($"{args.SocketError}");
+				Console.WriteLine($"{args.BytesTransferred}");
 				Disconnect();
 			}
 		}

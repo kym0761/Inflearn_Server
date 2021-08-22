@@ -11,6 +11,8 @@ namespace DummyClient
 	{
 		static void Main(string[] args)
 		{
+			Console.WriteLine("Client Program");
+
 			// DNS (Domain Name System)
 			string host = Dns.GetHostName();
 			IPHostEntry ipHost = Dns.GetHostEntry(host);
