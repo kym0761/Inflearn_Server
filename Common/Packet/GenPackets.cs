@@ -17,7 +17,6 @@ PlayerInfoReq = 1,
 
 class PlayerInfoReq
 {
-	public byte testByte;
 	public long PlayerID;
 	public string Name;
 	
@@ -76,10 +75,6 @@ class PlayerInfoReq
 		success &= BitConverter.TryWriteBytes(s.Slice(count, s.Length - count), (ushort)PacketID.PlayerInfoReq);
 		count += sizeof(ushort);
 		
-				segment.Array[segment.Offset + count] = (byte)testByte;
-				count += sizeof(byte);
-		
-		
 		success &= BitConverter.TryWriteBytes(s.Slice(count, s.Length - count), PlayerID);
 		count += sizeof(long);
 		
@@ -110,10 +105,6 @@ class PlayerInfoReq
 		ReadOnlySpan<byte> s = new ReadOnlySpan<byte>(segment.Array, segment.Offset, segment.Count);
 		count += sizeof(ushort);
 		count += sizeof(ushort);
-		
-				testByte = (byte)segment.Array[segment.Offset + count];
-				count += sizeof(byte);
-		
 		
 		PlayerID = BitConverter.ToInt64(s.Slice(count, s.Length - count));
 		count += sizeof(long);

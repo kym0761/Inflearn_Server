@@ -1,0 +1,15 @@
+C:\Github\Inflearn_Server\PacketGenerator\bin\PacketGenerator.exe
+C:\Github\Inflearn_Server\PacketGenerator\bin\PacketGenerator.deps.json
+C:\Github\Inflearn_Server\PacketGenerator\bin\PacketGenerator.runtimeconfig.json
+C:\Github\Inflearn_Server\PacketGenerator\bin\PacketGenerator.runtimeconfig.dev.json
+C:\Github\Inflearn_Server\PacketGenerator\bin\PacketGenerator.dll
+C:\Github\Inflearn_Server\PacketGenerator\bin\ref\PacketGenerator.dll
+C:\Github\Inflearn_Server\PacketGenerator\bin\PacketGenerator.pdb
+C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\PacketGenerator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\PacketGenerator.AssemblyInfoInputs.cache
+C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\PacketGenerator.AssemblyInfo.cs
+C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\PacketGenerator.csproj.CoreCompileInputs.cache
+C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\PacketGenerator.dll
+C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\ref\PacketGenerator.dll
+C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\PacketGenerator.pdb
+C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\PacketGenerator.genruntimeconfig.cache

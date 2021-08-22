@@ -14,3 +14,10 @@ C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\net5.0\PacketGenerator.dll
 C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\net5.0\ref\PacketGenerator.dll
 C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\net5.0\PacketGenerator.pdb
 C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\net5.0\PacketGenerator.genruntimeconfig.cache
+C:\Github\Inflearn_Server\PacketGenerator\bin\net5.0\PacketGenerator.exe
+C:\Github\Inflearn_Server\PacketGenerator\bin\net5.0\PacketGenerator.deps.json
+C:\Github\Inflearn_Server\PacketGenerator\bin\net5.0\PacketGenerator.runtimeconfig.json
+C:\Github\Inflearn_Server\PacketGenerator\bin\net5.0\PacketGenerator.runtimeconfig.dev.json
+C:\Github\Inflearn_Server\PacketGenerator\bin\net5.0\PacketGenerator.dll
+C:\Github\Inflearn_Server\PacketGenerator\bin\net5.0\ref\PacketGenerator.dll
+C:\Github\Inflearn_Server\PacketGenerator\bin\net5.0\PacketGenerator.pdb

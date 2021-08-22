@@ -13,6 +13,9 @@ namespace PacketGenerator
 
         static void Main(string[] args)
         {
+
+            string PDL_Path = "../PDL.xml";
+
             XmlReaderSettings setting = new XmlReaderSettings()
             {
                 //comment,공백 무시.
@@ -20,7 +23,12 @@ namespace PacketGenerator
                 IgnoreWhitespace = true
             };
 
-            using (XmlReader r = XmlReader.Create("PDL.xml", setting))
+            if (args.Length >= 1)
+            {
+                PDL_Path = args[0];
+            }
+
+            using (XmlReader r = XmlReader.Create(PDL_Path, setting))
             {
                 r.MoveToContent();
 
