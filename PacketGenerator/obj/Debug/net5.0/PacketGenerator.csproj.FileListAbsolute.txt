@@ -1,0 +1,16 @@
+C:\Github\Inflearn_Server\PacketGenerator\bin\Debug\net5.0\PacketGenerator.exe
+C:\Github\Inflearn_Server\PacketGenerator\bin\Debug\net5.0\PacketGenerator.deps.json
+C:\Github\Inflearn_Server\PacketGenerator\bin\Debug\net5.0\PacketGenerator.runtimeconfig.json
+C:\Github\Inflearn_Server\PacketGenerator\bin\Debug\net5.0\PacketGenerator.runtimeconfig.dev.json
+C:\Github\Inflearn_Server\PacketGenerator\bin\Debug\net5.0\PacketGenerator.dll
+C:\Github\Inflearn_Server\PacketGenerator\bin\Debug\net5.0\ref\PacketGenerator.dll
+C:\Github\Inflearn_Server\PacketGenerator\bin\Debug\net5.0\PacketGenerator.pdb
+C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\net5.0\PacketGenerator.csproj.AssemblyReference.cache
+C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\net5.0\PacketGenerator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\net5.0\PacketGenerator.AssemblyInfoInputs.cache
+C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\net5.0\PacketGenerator.AssemblyInfo.cs
+C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\net5.0\PacketGenerator.csproj.CoreCompileInputs.cache
+C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\net5.0\PacketGenerator.dll
+C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\net5.0\ref\PacketGenerator.dll
+C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\net5.0\PacketGenerator.pdb
+C:\Github\Inflearn_Server\PacketGenerator\obj\Debug\net5.0\PacketGenerator.genruntimeconfig.cache
