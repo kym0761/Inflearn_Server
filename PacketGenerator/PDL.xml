@@ -1,13 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <PDL>
-  <packet name ="PlayerInfoReq">
-    <long name="PlayerID"/>
-    <string name="Name"/>
-    <list name="Skill">
-      <int name="ID"/>
-      <short name="Level"/>
-      <float name="Duration"/>
-    </list>
+  <packet name ="C_Chat">
+    <string name="Chat"/>
+  </packet>
+  <packet name ="S_Chat">
+    <int name="PlayerID"/>
+    <string name="Chat"/>
   </packet>
 </PDL>
   

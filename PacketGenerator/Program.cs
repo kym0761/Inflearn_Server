@@ -11,6 +11,8 @@ namespace PacketGenerator
         static ushort PacketID;
         static string PacketEnums;
 
+        static string ClientRegister;
+        static string ServerRegister;
         static void Main(string[] args)
         {
 
@@ -43,6 +45,10 @@ namespace PacketGenerator
                 }
                 string fileText = string.Format(PacketFormat.FileFormat, PacketEnums, GenPackets);
                 File.WriteAllText("GenPackets.cs", fileText);
+                string clientManagerText = string.Format(PacketFormat.ManagerFormat, ClientRegister);
+                File.WriteAllText("ClientPacketManager.cs", clientManagerText);
+                string serverManagerText = string.Format(PacketFormat.ManagerFormat, ServerRegister);
+                File.WriteAllText("ServerPacketManager.cs", serverManagerText);
             }
 
         }
@@ -75,6 +81,15 @@ namespace PacketGenerator
                 , packetName, t.Item1, t.Item2, t.Item3);
 
             PacketEnums += string.Format(PacketFormat.PacketEnumFormat,packetName,++PacketID) + Environment.NewLine + "\t";
+
+            if (packetName.StartsWith("S_") || packetName.StartsWith("s_"))
+            {
+                ClientRegister += string.Format(PacketFormat.ManagerRegisterFormat, packetName) + Environment.NewLine;
+            }
+            else 
+            {
+                ServerRegister += string.Format(PacketFormat.ManagerRegisterFormat, packetName) + Environment.NewLine;
+            }
         }
 
         //{1} memberVariables
