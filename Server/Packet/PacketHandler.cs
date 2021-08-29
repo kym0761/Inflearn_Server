@@ -19,14 +19,11 @@ class PacketHandler
             return;
         }
 
-        clientSession.Room.Broadcast(clientSession,p.Chat);
+        //참조를 망가트리지 않기 위해서 임시 변수를 선언해준다.
+        GameRoom room = clientSession.Room;
+        room.Push(
+            () => room.Broadcast(clientSession, p.Chat));
 
-        //Console.WriteLine($"Player Info Req : {p.PlayerID}, Name : {p.Name} ");
-
-        //foreach (C_PlayerInfoReq.Skill skill in p.skills)
-        //{
-        //    Console.WriteLine($"Skill : {skill.ID}, {skill.Level}, {skill.Duration}");
-        //}
-
+        //clientSession.Room.Broadcast(clientSession,p.Chat);
     }
 }

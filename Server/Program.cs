@@ -15,7 +15,11 @@ namespace Server
 
 		public static GameRoom Room = new GameRoom();
 
-
+		static void FlushRoom()
+		{
+			Room.Push(() => Room.Flush());
+			JobTimer.Instance.Push(FlushRoom, 250);
+		}
 		static void Main(string[] args)
 		{
 			//PacketManager.Instance.Register();
@@ -31,9 +35,12 @@ namespace Server
 			_listener.Init(endPoint, () => { return SessionManager.Instance.Generate(); });
 			Console.WriteLine("Listening...");
 
+			//initial start
+			JobTimer.Instance.Push(FlushRoom);
+
 			while (true)
 			{
-				//;
+				JobTimer.Instance.Flush();
 			}
 		}
 	}

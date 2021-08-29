@@ -10,7 +10,7 @@ namespace ServerCore
 		//멀티쓰레드 환경이므로, 쓰레드들마다 sendbuffer는 threadlocal로 만듬.
 		public static ThreadLocal<SendBuffer> CurrentBuffer = new ThreadLocal<SendBuffer>(() => { return null; });
 
-		public static int ChunkSize { get; set; } = 4096 * 100;
+		public static int ChunkSize { get; set; } = 65535 * 100;
 
 		public static ArraySegment<byte> Open(int reserveSize)
 		{

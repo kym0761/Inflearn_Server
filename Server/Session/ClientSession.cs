@@ -19,7 +19,9 @@ namespace Server
 			//Thread.Sleep(5000);
 			//Disconnect();
 
-			Program.Room.Enter(this);
+			Program.Room.Push(() => Program.Room.Enter(this));
+
+			//Program.Room.Enter(this);
 
 		}
 
@@ -28,11 +30,11 @@ namespace Server
 			PacketManager.Instance.OnRecvPacket(this, buffer);
 		}
 
-		// TEMP
-		public void Handle_PlayerInfoOk(ArraySegment<byte> buffer)
-		{
+		//// TEMP
+		//public void Handle_PlayerInfoOk(ArraySegment<byte> buffer)
+		//{
 
-		}
+		//}
 
 		public override void OnDisconnected(EndPoint endPoint)
 		{
@@ -41,14 +43,16 @@ namespace Server
 			SessionManager.Instance.Remove(this);
 			if (Room != null)
 			{
-				Room.Leave(this);
+				//room이라는 변수로 참조가 망가지지 않게 도와주면 크래시가 나지 않을 것이다.
+				GameRoom room = Room;
+				room.Push(() => room.Leave(this));
 				Room = null;
 			}
 		}
 
 		public override void OnSend(int numOfBytes)
 		{
-			Console.WriteLine($"Transferred bytes: {numOfBytes}");
+			//Console.WriteLine($"Transferred bytes: {numOfBytes}");
 		}
 	}
 }

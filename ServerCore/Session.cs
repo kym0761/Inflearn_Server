@@ -16,6 +16,8 @@ namespace ServerCore
 		{
 			int processLen = 0;
 
+			int packetCount = 0;
+
 			while (true)
 			{
 				// 최소한 헤더는 파싱할 수 있는지 확인
@@ -29,11 +31,17 @@ namespace ServerCore
 
 				// 여기까지 왔으면 패킷 조립 가능
 				OnRecvPacket(new ArraySegment<byte>(buffer.Array, buffer.Offset, dataSize));
+				packetCount++;
 
 				processLen += dataSize;
 
 				//버퍼 사용됐다면 위치 옮겨야할걸
 				buffer = new ArraySegment<byte>(buffer.Array, buffer.Offset + dataSize, buffer.Count - dataSize);
+			}
+
+			if (packetCount > 1)
+			{
+                Console.WriteLine($"PacketCount : {packetCount}");
 			}
 
 			return processLen;
@@ -47,7 +55,7 @@ namespace ServerCore
 		Socket _socket;
 		int _disconnected = 0;
 
-		RecvBuffer _recvBuffer = new RecvBuffer(1024);
+		RecvBuffer _recvBuffer = new RecvBuffer(65535);
 
 		object _lock = new object();
 
@@ -88,6 +96,28 @@ namespace ServerCore
 			lock (_lock)
 			{
 				_sendQueue.Enqueue(sendBuff);
+				if (_pendingList.Count == 0)
+				{
+					RegisterSend();
+				}
+			}
+		}
+
+		public void Send(List<ArraySegment<byte>> sendBuffList)
+		{
+			//갯수가 0이면 Disconnect되는 문제를 방지하기 위해서
+			if (sendBuffList.Count == 0)
+			{
+				return;
+			}
+
+			lock (_lock)
+			{
+				foreach (ArraySegment<byte> sendBuff in sendBuffList)
+				{
+					_sendQueue.Enqueue(sendBuff);
+				}
+
 				if (_pendingList.Count == 0)
 				{
 					RegisterSend();

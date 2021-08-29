@@ -15,7 +15,7 @@ class PacketHandler
 
        // if (chatPacket.PlayerID == 1)
         {
-            Console.WriteLine(chatPacket.Chat);
+            //Console.WriteLine(chatPacket.Chat);
         }
 
 
