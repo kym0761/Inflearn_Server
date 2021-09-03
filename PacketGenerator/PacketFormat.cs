@@ -14,7 +14,7 @@ namespace PacketGenerator
 using System;
 using System.Collections.Generic;
 
- class PacketManager
+public class PacketManager
 {{
     #region singleton
     static PacketManager _instance = new PacketManager();
@@ -26,7 +26,7 @@ using System.Collections.Generic;
         Register();
     }}
 
-    Dictionary<ushort, Action<PacketSession, ArraySegment<byte>>> _OnRecv = new Dictionary<ushort, Action<PacketSession, ArraySegment<byte>>>();
+    Dictionary<ushort, Func<PacketSession, ArraySegment<byte>, IPacket>> _MakeFunc = new Dictionary<ushort, Func<PacketSession, ArraySegment<byte>, IPacket>>();
     Dictionary<ushort, Action<PacketSession, IPacket>> _Handler = new Dictionary<ushort, Action<PacketSession, IPacket>>();
 
     public void Register()
@@ -34,7 +34,7 @@ using System.Collections.Generic;
 		{0}
     }}
 
-    public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)
+    public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer, Action<PacketSession,IPacket> onRecvCallback = null)
     {{
         ushort count = 0;
 
@@ -43,33 +43,47 @@ using System.Collections.Generic;
         ushort id = BitConverter.ToUInt16(buffer.Array, buffer.Offset + count);
         count += 2;
 
-        Action<PacketSession, ArraySegment<byte>> action = null;
-
-        if (_OnRecv.TryGetValue(id, out action))
+        Func<PacketSession, ArraySegment<byte>, IPacket> func = null;
+        if (_MakeFunc.TryGetValue(id, out func))
         {{
-            action.Invoke(session, buffer);
+            IPacket packet = func.Invoke(session, buffer);
+
+            if (onRecvCallback != null)
+            {{
+                onRecvCallback.Invoke(session, packet);
+            }}
+            else 
+            {{
+                HandlePacket(session, packet);
+            }}
         }}
 
     }}
 
-    public void MakePacket<T>(PacketSession session, ArraySegment<byte> buffer) where T : IPacket, new()
+    public T MakePacket<T>(PacketSession session, ArraySegment<byte> buffer) where T : IPacket, new()
     {{
         T packet = new T();
         packet.Read(buffer);
 
+        return packet;
+    }}
+
+
+    public void HandlePacket(PacketSession session, IPacket packet)
+    {{
         Action<PacketSession, IPacket> action = null;
         if (_Handler.TryGetValue(packet.Protocol, out action))
         {{
             action.Invoke(session, packet);
         }}
     }}
+
 }}
 ";
 		//{0} 패킷 이름
 		public static string ManagerRegisterFormat =
-			@"		_OnRecv.Add((ushort)PacketID.{0}, MakePacket<{0}>);
-			_Handler.Add((ushort)PacketID.{0},PacketHandler.{0}Handler);
-";
+			@"	_MakeFunc.Add((ushort)PacketID.{0}, MakePacket<{0}>);
+	_Handler.Add((ushort)PacketID.{0},PacketHandler.{0}Handler);";
 
 
 
@@ -89,7 +103,7 @@ public enum PacketID
 	{0}
 }}
 
-interface IPacket
+public interface IPacket
 {{
 	ushort Protocol {{ get; }}
 	void Read(ArraySegment<byte> segment);
@@ -112,7 +126,7 @@ interface IPacket
 		//{3} 멤머 변수 write
         public static string _PacketFormat =
 @"
-class {0} : IPacket
+public class {0} : IPacket
 {{
 	{1}
 
@@ -214,20 +228,20 @@ public List<{0}> {1}s = new List<{0}>();
 		public static string ReadListFormat = @"
 {1}s.Clear();
 ushort {1}Length = BitConverter.ToUInt16(segment.Array, segment.Offset + count);
-count += sizeof(ushort);
+count += sizeof(ushort);"
+;
 
-
-for (int i = 0; i < {1}Length; i++)
-{{
-	{0} skill = new {0}();
-	{1}.Read(s,ref count);
-	{1}s.Add({1});
-}}";
+//for (int i = 0; i < {1}Length; i++)
+//{{
+//	{0} skill = new {0}();
+//	{1}.Read(s,ref count);
+//	{1}s.Add({1});
+//}}";
 
 		// {0} 리스트 이름 대문자
 		// {1} 리스트 이름 소문자
 		public static string WriteListFormat = @"
-Array.Copy(BitConverter.GetBytes((ushort){1}s.Count), 0, segment.Array, segment.Offset + count, sizeof((ushort)));
+Array.Copy(BitConverter.GetBytes((ushort){1}s.Count), 0, segment.Array, segment.Offset + count, sizeof(ushort));
 count += sizeof(ushort);
 foreach ({0} {1} in {1}s)
 {{

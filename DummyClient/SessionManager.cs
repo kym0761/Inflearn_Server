@@ -11,7 +11,7 @@ namespace DummyClient
 
         List<ServerSession> _Sessions = new List<ServerSession>();
         object _Lock = new object();
-
+        Random _Rand = new Random();
         public ServerSession Generate()
         {
             lock (_Lock)
@@ -30,11 +30,12 @@ namespace DummyClient
             {
                 foreach (ServerSession s in _Sessions)
                 {
-                    C_Chat chatPacket = new C_Chat();
-                    chatPacket.Chat = $"hello Server...!";
-                    ArraySegment<byte> segment = chatPacket.Write();
+                    C_Move packet = new C_Move();
+                    packet.PosX = _Rand.Next(-50, 50);
+                    packet.PosY = 0;
+                    packet.PosZ = _Rand.Next(-50, 50);
 
-                    s.Send(segment);
+                    s.Send(packet.Write());
 
                 }
             }
